@@ -1,0 +1,304 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-family: 'Montserrat', sans-serif;
+    color: $dark-gray;
+    &.darkmode{
+        color: $off-white;
+    }
+}
+
+body{
+    background: $off-white;
+    &.darkmode{
+        background: $dark-gray;
+        z-index: -1;
+    }
+}
+
+h1{
+    font-size: 4.5rem;
+}
+
+button{
+    all: unset;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+// Fonts
+
+@font-face {
+    font-family: "KillTheNoise";
+    src:
+      url("/fonts/KillTheNoise-2VM8.woff") format("woff"), /* Modern Browsers */
+      url("/fonts/KillTheNoise-2VM8.woff2") format("woff2"), /* Modern Browsers */
+      url("/fonts/KillTheNoise-2VM8.svg") format("svg"); /* svg */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+// Animations
+
+@keyframes splash{
+    0%{
+        transform: scaleY(0);
+        transform-origin: bottom;
+        background-color: $pink;
+    }
+
+    59%{
+        transform: scaleY(1);
+        transform-origin: bottom;  
+        background-color: $blue;      
+    }
+    60%{
+        transform: scaleY(1);
+        transform-origin: top;
+    }
+
+    100%{
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+}
+
+@keyframes slideup{
+    0%{
+        opacity:0;
+        transform: translateY(60vh) scale(0.8);
+    }
+    100%{
+        opacity: 1;
+    }
+
+}
+
+@keyframes pop{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+        background-image: url(small.gif);
+        background-clip: text;
+        background-position: cover;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    30%{
+        transform: scale(1); 
+        opacity: 1;  
+        color: $pink; 
+    }
+    31%{
+        opacity: 0;
+    }
+    33%{
+        transform: translateX(-25px) translateY(15px);
+        opacity: 1;
+        color: $yellow;
+    }
+    34%{
+        opacity: 0;
+    }
+    36%{
+        transform: translateX(35px);
+        opacity: 1;
+    }
+    37%{
+        opacity: 0;
+        color: black;
+    }
+    39%{
+        opacity: 1;
+    }
+    45%{
+        color: transparent;
+    }
+    70%{
+        background-image: url(small.gif);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    
+    95%{
+        transform: translateY(-45vh) scale(0.5);
+        background-image: url(small.gif);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    96%{
+        transform: translateY(-45.54vh) translateX(15px) scale(0.5);
+        color: $yellow;
+    }
+    97%{
+        transform: translateY(-44.90vh) translateX(-10px) scale(0.4);
+    }
+    100%{
+        transform: translateY(-45vh) scale(0.4);
+        color: $dark-gray;
+    }
+}
+
+@keyframes play{
+0%{
+}
+50%{
+  filter: brightness(80%);
+  }
+  100%{
+  }
+}
+// Toggle
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #9A9A9A;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: $off-white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #222222;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #222222;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: gray;
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+  //Input Slider XD
+
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 7px 0;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    box-shadow:none;
+    background: $dark-gray;
+    border-radius: 0px;
+    border:none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50px;
+    background: $dark-gray;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #f0f0f0;
+    border-radius: 0px;
+    border: none;
+  }
+  input[type=range]::-moz-range-thumb {
+    box-shadow: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50px;
+    background: $dark-gray;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #b0b0b0;
+    border: none;
+    border-radius: 0px;
+    box-shadow:none;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: #f0f0f0;
+    border:none;
+    border-radius: 0px;
+    box-shadow: none;
+  }
+  input[type=range]::-ms-thumb {
+    box-shadow: none;
+    border:none;
+    border-radius: 50px;
+    background: #fafafa;
+    cursor: pointer;
+    height: 2px;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background:none;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: none;
+  }
+  

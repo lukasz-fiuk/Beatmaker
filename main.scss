@@ -1,0 +1,156 @@
+// Variables
+$pink: #F0B1FF;
+$yellow: #FFFA81;
+$dark-gray:#343434;
+$off-white:#FAFAFA;
+$blue:#6F71F7;
+
+// Mixins
+@mixin center {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+// Global & animations
+@import "global&animations";
+
+
+
+
+  // Splash Screen
+
+  .splash{
+    position: absolute;
+      width: 100vw;
+      height: 100vh;
+      @include center;
+      pointer-events: none;
+      &__overlay{
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+
+        background: $pink;
+        animation: splash 1.3s ease both 0.2s;
+    }
+      &__h1{
+              grid-row: 1/2;
+              font-family: "killthenoise";
+              font-size: 10rem;
+              font-weight: normal;
+              color: $dark-gray;
+              pointer-events: all;
+            
+              animation: pop 3s ease-in-out both 0.8s;
+              will-change: animation;
+          }
+  }
+
+// Content
+
+.container{
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    display: grid;
+    align-items: center;
+    // animation: slideup 2s ease-in-out both 1.6s;
+    &__beat{
+        display: grid;
+        grid-template-rows: 1;
+        justify-items: center;
+        align-items: center;
+        animation: slideup 2s ease-in-out both 1.6s;
+    }
+    &__switch{
+        position: absolute;
+        transform: rotate(90deg) scale(0.7);
+        right: 0;
+        top: 50%;
+        margin-top: -15px;
+        animation: slideup 2s ease-in-out both 1.6s;
+        will-change: animation;
+    }
+    &__playbtn{
+        position: absolute;
+        border: 1px solid $dark-gray;
+        border-radius: 30px;
+        color: $dark-gray;
+        height: 60px;
+        width: 180px;
+        text-align: center;
+        bottom: 60px;
+        right: 150px;
+        cursor: pointer;
+        animation: slideup 2.2s ease-in-out both 1.6s;
+        transition: all 0.6s ease-in-out;
+        transform: scale(1);
+        &:hover{
+            transform: scale(1.1);
+            background: #343434;
+            color: #FAFAFA;
+        }
+    }
+    &__tempo{
+        position: absolute;
+        bottom: 60px;
+        left: 150px;
+
+        animation: slideup 2.2s ease-in-out both 1.6s;
+        & input{
+            width: 470px;
+            background-color: transparent;
+        }
+    }
+}
+
+.beat{
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    align-items: center;
+    justify-self: center;
+    width: 1160px;
+
+    &__h1{
+pointer-events: none;
+    }
+    &__select{
+        all:unset;
+        margin-top: 25px;
+    }
+    &__tiles{
+        justify-self:end;
+        display: flex;
+        margin-right: -28px;
+        & .tile{
+            cursor: pointer;
+            width: 72px;
+            height: 72px;
+            background: #E1E1E1;
+            opacity: 1;
+            margin: 18px;
+            transition: background 0.2s ease-out;
+            &--kick.active{
+                background: $blue;
+                opacity: 1;
+            }
+            &--snare.active{
+                background: $pink;
+                opacity: 1;
+            }
+            &--hihat.active{
+                background: $yellow;
+                opacity: 1;
+            }
+        }
+    }
+    & button{
+        transform: rotate(90deg);
+        margin-left: -18px;
+    }
+}
+
+
+
